@@ -144,6 +144,8 @@ class DashboardPage extends PolymerElement {
                                 <td>Transfer Amount</td>
                                 <td>Remit Charges</td>
                                 <td>Total Amount</td>
+                                <td>Currency Type</td>
+                                <td>Converted Amount</td>
                                 <td>Status</td>
                             </tr>
                         </thead>
@@ -156,17 +158,21 @@ class DashboardPage extends PolymerElement {
                                     <td>{{item.transferAmount}}</td>
                                     <td>{{item.remitCharges}}</td>
                                     <td>{{item.totalAmount}}</td>
+                                    <td>{{item.currencyType}}</td>
+                                    <td>{{item.convertedAmount}}</td>
                                     <td>{{item.status}}</td>
                                 </tr>
                             </template>
                             <tr>
-                                    <td>abc</td>
-                                    <td>abc</td>
-                                    <td>abc</td>
-                                    <td>abc</td>
-                                    <td>abc</td>
-                                    <td>abc</td>
-                                    <td>abc</td>
+                                    <td>50002</td>
+                                    <td>1001</td>
+                                    <td>INR</td>
+                                    <td>10000</td>
+                                    <td>200</td>
+                                    <td>10200</td>
+                                    <td>SGD</td>
+                                    <td>200</td>
+                                    <td>Pending</td>
                                 </tr>
                         </tbody>
                     </table>
