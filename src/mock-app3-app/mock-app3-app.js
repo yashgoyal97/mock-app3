@@ -20,7 +20,6 @@ class MockApp3App extends PolymerElement {
     <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
       <login-page name="login"></login-page>
       <dashboard-page name="dashboard" user-data={{userData}}></dashboard-page>
-      <transfer-page name="transfer" user-data={{userData}}></transfer-page>
     </iron-pages>
     `;
   }
@@ -56,7 +55,7 @@ class MockApp3App extends PolymerElement {
   _routePageChanged(page) {
     if (!page) {
       this.page = 'login';
-    } else if (['login', 'dashboard', 'transfer'].indexOf(page) !== -1) {
+    } else if (['login', 'dashboard'].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';

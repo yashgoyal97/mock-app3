@@ -12,7 +12,7 @@ class DashboardPage extends PolymerElement {
                 .container{
                     display:grid;
                     background-color:rgba(0,0,0,0.1);
-                    grid-template-rows:60px 300px auto;
+                    grid-template-rows:60px auto auto;
                     grid-template-columns:auto;
                     grid-template-areas:"h""md""td";
                 }
@@ -30,28 +30,43 @@ class DashboardPage extends PolymerElement {
                     // border:2px solid;
                     border-radius:5px;
                     height:100px;
-                    width:1200px;
+                    width:1100px;
                     margin:20px;
                     background-color:rgba(255,255,255,0.7);
+                    position:relative;
+                    left:80px;
+                    z-index:1;
                 }
                 .transferDetails{
                     grid-area:td;
-                    padding:20px;
+                    padding:10px;
+                    border-radius:5px;
+                    width:1100px;
+                    margin:20px;
+                    background-color:rgba(255,255,255,0.7);
+                    position:relative;
+                    left:80px;
+                    z-index:1;
                 }
                 #headerAction{
                     position:relative;
                     bottom:71px;
                     left:1090px;
+                    width:250px;
+                }
+                iron-collapse{
+                    width:250px;
                 }
                 #logoutDropdown{
                     display:flex;
                     flex-direction:column;
                     background-color:rgba(255,255,255,0.8);
                     color:black;
-                    width:250px;
+                    width:255px;
                     position:relative;
-                    bottom:16px;
+                    bottom:70px;
                     border-radius:2px;
+                    z-index:2;
                 }
                 #expandTrigger{
                     background-color:rgba(255,255,255,0.8);
@@ -60,8 +75,8 @@ class DashboardPage extends PolymerElement {
                     height:60px;
                     width:45px;
                     position:relative;
-                    bottom:18px;
-                    right:10px;
+                    bottom:70px;
+                    left:210px;
                 }
                 #transferTrigger{
                     background-color:rgba(0,0,0,0.7);
@@ -77,6 +92,7 @@ class DashboardPage extends PolymerElement {
                     position:relative;
                     bottom:12px;
                     left:50px
+                    width:300px;
                 }
                 td{
                     padding:10px;
@@ -86,6 +102,10 @@ class DashboardPage extends PolymerElement {
                 }
                 .values{
                     color:green;
+                }
+                #ad1{
+                    position:relative;
+                    right:80px;
                 }
             </style>
             <app-location route="{{route}}"></app-location>
@@ -105,11 +125,11 @@ class DashboardPage extends PolymerElement {
                     </div>
                 </div>
                 <div class="myDetails">
-                    <div class='accountDetails'>
+                    <div class='accountDetails' id="ad1">
                         <h3>NAME: <span class='values'>{{userName}}</span></h3>
                         <h3>A/C NO: <span class='values'>{{accountNumber}}</span></h3>
-                    </div>
-                    <div class='accountDetails'>
+                    </div> 
+                    <div class='accountDetails' id="ad2">
                         <h3> A/C BALANCE: <span class='values'>{{accountDetails.accountBalance}}</span></h3>
                         <h3>CURRENCY TYPE: <span class='values'>{{accountDetails.currencyType}}</span></h3>
                     </div>
@@ -184,9 +204,11 @@ class DashboardPage extends PolymerElement {
 
     _userDataChanged(newVal) {
         console.log(newVal);
-        this.userName = newVal.userName;
-        this.userId = newVal.userId;
-        this.accountNumber = newVal.accountNumber;
+        let userDataObj = {userName:newVal.userName,userId:newVal.userId,accountNumber:newVal.accountNumber};
+        sessionStorage.setItem('userDataObj',JSON.stringify(userDataObj));
+        this.userName = JSON.parse(sessionStorage.getItem('userDataObj')).userName;
+        this.userId = JSON.parse(sessionStorage.getItem('userDataObj')).userId;
+        this.accountNumber = JSON.parse(sessionStorage.getItem('userDataObj')).accountNumber;
         // let userDataReq = (this._getAjaxConfig('', 'get')).generateRequest();
         // let accountSummaryReq = (this._getAjaxConfig('', 'get')).generateRequest();
         // let transactionSummaryReq = (this._getAjaxConfig('', 'get')).generateRequest();

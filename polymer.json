@@ -1,5 +1,38 @@
 {
   "npm": true,
+  "entrypoint": "index.html",
+  "shell": "src/mock-app3-app/mock-app3-app.js",
+  "sources": [
+    "src/**/*",
+    "manifest/**",
+    "images/background.jpg",
+    "package.json"
+   ],
+   "fragments": [
+    "src/mock-app3-app/login-page.js",
+    "src/mock-app3-app/dashboard-page.js",
+    "src/mock-app3-app/view404-page.js"
+  ],
+   "extraDependencies": [
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/**"
+  ],
+  "moduleResolution": "node",
+  "builds": [
+    {
+      "preset": "es5-bundled",
+      "addServiceWorker": true
+    },
+    {
+      "preset": "es6-unbundled",
+      "addServiceWorker": true
+    },
+    {
+      "preset": "es6-bundled",
+      "addServiceWorker": true
+    }
+  ],
+
   "lint": {
     "rules": [
       "polymer-3"
