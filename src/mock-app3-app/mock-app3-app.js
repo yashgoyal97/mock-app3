@@ -70,9 +70,6 @@ class MockApp3App extends PolymerElement {
       case 'dashboard':
         import('./dashboard-page.js');
         break;
-      case 'transfer':
-        import('./transfer-page.js');
-        break;
       case 'view404':
         import('./view404-page.js');
         break;
