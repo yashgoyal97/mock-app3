@@ -1,0 +1,6 @@
+{
+  "name": "mock-app3",
+  "short_name": "mock-app3",
+  "start_url": "/",
+  "display": "standalone"
+}
